@@ -17,6 +17,7 @@ maximum = max(nums)
 minimum = min(nums)
 nums = [num for num in nums if target - maximum <= num <= target - minimum]
 
+solved = False
 
 for idx in range(len(nums)):
     for jdx in range(len(nums)):
@@ -24,5 +25,11 @@ for idx in range(len(nums)):
             if idx == jdx or idx == kdx or jdx == kdx:
                 continue
             if nums[idx] + nums[jdx] + nums[kdx] == target:
+                solved = True
                 print(f"{nums[idx]} + {nums[jdx]} + {nums[kdx]}")
                 print(f"{nums[idx] * nums[jdx] * nums[kdx]}")
+                break
+        if solved:
+            break
+    if solved:
+        break
