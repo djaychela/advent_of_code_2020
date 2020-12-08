@@ -592,4 +592,3 @@ vibrant fuchsia bags contain 3 posh brown bags.
 dark olive bags contain 5 dim coral bags, 4 pale red bags, 5 drab aqua bags.
 posh purple bags contain 2 bright red bags, 4 pale coral bags, 1 dotted bronze bag.
 dark lavender bags contain 2 striped blue bags, 5 posh blue bags, 2 plaid green bags.
-

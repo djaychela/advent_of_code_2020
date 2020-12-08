@@ -1,13 +1,13 @@
 import pathlib
 
-file_name = "07_test.txt"
+file_name = "07.txt"
 current_dir = pathlib.Path(__file__).parent.absolute()
 file_path = pathlib.Path(current_dir / "data" / file_name)
 
 with open(file_path, "r") as file:
     bags = file.readlines()
 
-bag_colours = {}
+all_bags = {}
 for bag in bags:
     outer, inner = bag.split("contain")
     outer = ' '.join(outer.split()[:2])
@@ -20,21 +20,28 @@ for bag in bags:
             number = 0
         colour = ' '.join(content.split()[1:3])
         inner_dict[colour]=number
-    if outer not in bag_colours.keys():
-        bag_colours[outer] = inner_dict
+    if outer not in all_bags.keys():
+        all_bags[outer] = inner_dict
 
 
-def replace_contents(bag):
-    bag_contents = bag_colours[bag].items()
-    for content in bag
+def find_contents(bag_colour):
+    if bag_colour == "shiny gold":
+        return True
+    if bag_colour == "other bags.":
+        return None
+    bag_contents = all_bags[bag_colour].keys()
+    content_returns = []
+    for colour in bag_contents:
+        content_returns.append(find_contents(colour))
+    return any(content_returns)
+            
 
-
-for bag in bag_colours.keys():
-    print(bag, bag_colours[bag])
-    new_bag_contents = {}
-    for bag_colour, amount in bag_colours[bag].items():
-        print(bag_colour, amount)
-        print(bag_colours[bag_colour])
-        # present_new_contents = bag_colours[bag_colour].keys()
-        # present_new_amount = bag_colours[bag_colour].values() * amount
-        # print(present_new_contents, present_new_amount)
+print(all_bags)
+total = 0
+for colour in all_bags.keys():
+    contents = find_contents(colour)
+    if contents and colour !="shiny gold":
+        print(f"{colour} : {all_bags[colour]} := {contents}")
+        total += 1
+    
+print(total)
